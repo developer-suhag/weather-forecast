@@ -36,7 +36,7 @@ const getTemp = (temp) => {
             <h2 class="fs-1">${temp.name}, ${temp.sys.country}</h2>
             <h3>Temp: ${Math.round(temp.main.temp)}<sup>°</sup>C</h3>
             <h4>Feels like: ${Math.round(temp.main.feels_like)}<sup>°</sup>C</h4>
-            <h5>Max temp: ${temp.main.temp_max} - Min temp: ${temp.main.temp_min}</h5>
+            <h5>Max temp: ${Math.round(temp.main.temp_max)} - Min temp: ${Math.round(temp.main.temp_min)}</h5>
             <h4 class="text-capitalize">Weather: ${temp.weather[0].description}</h4>
             <p>Wind: ${temp.wind.speed} Km / h</p>
 
