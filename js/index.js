@@ -1,20 +1,31 @@
+const spinner = document.getElementById('spinner');
+const weatherDetails = document.getElementById('weather-details');
 const getWeatherDate = async () => {
     // get search field
     const searchedCity = document.getElementById('searched-city');
     const cityName = searchedCity.value;
+    weatherDetails.innerHTML = ''
     // fetch data
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=cc3b56ef1c477f72c7273d5c5abb66fe`;
+    spinner.classList.remove('d-none')
     const res = await fetch(url);
     const data = await res.json()
+
     // error handle
     if (data.cod == 404) {
         alert(data.message)
+        spinner.classList.add('d-none')
         searchedCity.value = '';
     } else if (cityName == '') {
+        spinner.classList.add('d-none')
         alert('Please Enter a city name')
+
     } else {
-        getTemp(data);
-        searchedCity.value = '';
+        setTimeout(() => {
+            spinner.classList.add('d-none')
+            getTemp(data);
+            searchedCity.value = '';
+        }, 1000)
     }
 };
 
